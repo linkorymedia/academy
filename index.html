@@ -794,15 +794,19 @@ footer { background: #07131f; color: rgba(255,255,255,.4); font-size:.82rem; pad
       </div>
 
       <div class="apply-form">
-        <form id="consultForm" onsubmit="handleSubmit(event)">
+        <form id="consultForm" onsubmit="submitForm(event)">
           <div class="form-row">
             <div class="form-group">
               <label>姓名 <span>*</span></label>
-              <input type="text" placeholder="你的名字" required>
+              <input 
+type="text" 
+name="name"
+placeholder="你的名字" 
+required>
             </div>
             <div class="form-group">
               <label>品牌 / 公司名</label>
-              <input type="text" placeholder="（可留空）">
+              <select name="industry" required>
             </div>
           </div>
           <div class="form-row">
@@ -822,16 +826,28 @@ footer { background: #07131f; color: rgba(255,255,255,.4); font-size:.82rem; pad
             </div>
             <div class="form-group">
               <label>WhatsApp 号码 <span>*</span></label>
-              <input type="tel" placeholder="+6012-xxxxxxx" required>
+           <input 
+type="tel"
+name="whatsapp"
+placeholder="+6012-xxxxxxx"
+required>
             </div>
           </div>
           <div class="form-group">
             <label>目前最大的内容问题是什么？ <span>*</span></label>
-            <textarea placeholder="例如：不知道该发什么内容、发了但没有人看、不敢露脸……" required></textarea>
+            <textarea 
+name="problem"
+placeholder="例如：不知道该发什么内容、没有客户咨询..."
+required>
+</textarea>
           </div>
           <div class="form-group">
             <label>你希望通过商业个人IP达到什么目标？ <span>*</span></label>
-            <textarea placeholder="例如：希望建立线上客户来源、打造个人品牌、增加被动收入……" required></textarea>
+           <textarea 
+name="goal"
+placeholder="例如：希望建立线上客户来源..."
+required>
+</textarea>
           </div>
           <button type="submit" class="form-submit">提交申请 →</button>
           <p class="form-disclaimer">提交后，Wendy 会在 2–3 个工作日内亲自审核并联络合适的申请者。</p>
@@ -962,22 +978,35 @@ function toggleFaq(btn) {
 }
 
 /* Form submit (shows success message — wire up to Formspree/Google Forms as needed) */
-function handleSubmit(e) {
-  e.preventDefault();
-  document.getElementById('consultForm').style.display = 'none';
-  document.getElementById('formSuccess').style.display = 'block';
-  /*
-    ★ 接收表单的方式 (二选一):
-    方式 A — Formspree (推荐，免费):
-      1. 去 formspree.io 注册，创建一个 form
-      2. 把 <form> 的 action 改成 "https://formspree.io/f/你的ID"
-      3. 把 method 改成 "post"
-      4. 删除 onsubmit="handleSubmit(event)"，让它原生提交
+function submitForm(e){
 
-    方式 B — Google Forms:
-      1. 创建 Google Form 收集同样字段
-      2. 用 Google Form 嵌入 URL，或直接链接过去
-  */
+e.preventDefault();
+
+const form = document.getElementById("consultForm");
+
+const data = {
+name: form.name.value,
+brand: form.brand.value,
+industry: form.industry.value,
+whatsapp: form.whatsapp.value,
+problem: form.problem.value,
+goal: form.goal.value
+};
+
+
+fetch("https://script.google.com/macros/s/AKfycbxy34N-KNWzkpu5F43m05cs7UcdEI-ceusIkR2OPaaedRZTl2e6ELb7N84SG05RzOK5eQ/exec",{
+method:"POST",
+body: JSON.stringify(data)
+})
+.then(res=>res.text())
+.then(()=>{
+form.style.display="none";
+document.getElementById('formSuccess').style.display="block";
+})
+.catch(()=>{
+alert("提交失败，请稍后再试");
+});
+
 }
 
 /* Reduce marquee speed on mobile */
