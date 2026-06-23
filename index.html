@@ -805,14 +805,19 @@ placeholder="你的名字"
 required>
             </div>
             <div class="form-group">
-              <label>品牌 / 公司名</label>
-              <select name="industry" required>
+              <div class="form-group">
+  <label>品牌 / 公司名</label>
+  <input 
+  type="text"
+  name="company"
+  placeholder="你的品牌 / 公司名">
+</div>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
               <label>行业 <span>*</span></label>
-              <select required>
+              <select name="industry" required>
                 <option value="" disabled selected>请选择</option>
                 <option>电商 / 网店</option>
                 <option>餐饮 / 食品</option>
@@ -969,15 +974,6 @@ required>
 </footer>
 
 <script>
-/* FAQ toggle */
-function toggleFaq(btn) {
-  const item = btn.closest('.faq-item');
-  const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
-  if (!isOpen) item.classList.add('open');
-}
-
-/* Form submit (shows success message — wire up to Formspree/Google Forms as needed) */
 function submitForm(e){
 
 e.preventDefault();
@@ -986,7 +982,7 @@ const form = document.getElementById("consultForm");
 
 const data = {
 name: form.name.value,
-brand: form.brand.value,
+company: form.company.value,
 industry: form.industry.value,
 whatsapp: form.whatsapp.value,
 problem: form.problem.value,
@@ -994,25 +990,16 @@ goal: form.goal.value
 };
 
 
-fetch("https://script.google.com/macros/s/AKfycbxy34N-KNWzkpu5F43m05cs7UcdEI-ceusIkR2OPaaedRZTl2e6ELb7N84SG05RzOK5eQ/exec",{
+fetch("https://script.google.com/macros/s/AKfycbx7AHbxAvDv_mmZ0XCVENXE_7l4lNYx6nq8aIOC3gi4zYX0HnETDSfjhyiXIVSAW3XNRQ/exec",{
 method:"POST",
-body: JSON.stringify(data)
+body:JSON.stringify(data)
 })
-.then(res=>res.text())
+.then(res=>res.json())
 .then(()=>{
 form.style.display="none";
-document.getElementById('formSuccess').style.display="block";
-})
-.catch(()=>{
-alert("提交失败，请稍后再试");
+document.getElementById("formSuccess").style.display="block";
 });
 
-}
-
-/* Reduce marquee speed on mobile */
-if (window.innerWidth < 600) {
-  const m = document.getElementById('marquee');
-  if (m) m.style.animationDuration = '18s';
 }
 </script>
 </body>
