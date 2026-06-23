@@ -43,7 +43,8 @@ a { color: inherit; text-decoration: none; }
 nav { position: sticky; top: 0; z-index: 100; background: rgba(11,31,58,.96); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(201,168,76,.2); padding: 14px 0; }
 nav .inner { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
 .nav-logo { font-family: 'Noto Serif SC', serif; font-size: 1.1rem; font-weight: 900; color: var(--white); }
-.nav-logo span { color: var(--gold); }
+.nav-logo .logo-divider { color: rgba(255,255,255,.35); margin: 0 6px; font-weight: 300; }
+.nav-logo .logo-wendy { color: var(--gold); font-weight: 700; }
 .nav-links { display: flex; gap: 28px; }
 .nav-links a { color: rgba(255,255,255,.75); font-size: .9rem; transition: color .15s; }
 .nav-links a:hover { color: var(--gold); }
@@ -63,10 +64,13 @@ nav .inner { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: fl
 .hero-stat .num { font-size: 1.6rem; font-weight: 900; color: var(--gold); line-height: 1; }
 .hero-stat .lbl { font-size: .75rem; color: rgba(255,255,255,.55); margin-top: 2px; }
 .hero-img-wrap { display: flex; justify-content: center; align-items: flex-end; }
-.hero-img-frame { width: 100%; max-width: 400px; aspect-ratio: 3/4; border-radius: 20px 20px 0 0; overflow: hidden; border: 2px solid rgba(201,168,76,.3); background: var(--navy2); }
-.hero-img-frame img { width: 100%; height: 100%; object-fit: cover; }
+.hero-img-frame { width: 100%; max-width: 400px; aspect-ratio: 3/4; border-radius: 20px 20px 0 0; overflow: hidden; border: 2px solid rgba(201,168,76,.3); background: var(--navy2); position: relative; }
+.hero-img-frame img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+/* Mobile gradient fade — image bleeds into background */
+.hero-img-frame::after { content:''; position:absolute; bottom:0; left:0; right:0; height:40%; background: linear-gradient(to top, var(--navy) 0%, transparent 100%); pointer-events:none; display:none; }
 .img-placeholder { width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:rgba(255,255,255,.3);font-size:.82rem;text-align:center;padding:20px;background:linear-gradient(160deg,var(--navy2),#1e3a60); }
 .img-placeholder .icon { font-size:3rem; }
+@media (max-width:900px) { .hero-img-frame::after { display:block; } }
 
 /* ── PAIN ── */
 #pain { background: var(--navy); color: var(--white); padding: 80px 0; }
@@ -321,7 +325,7 @@ footer { background: #07131f; color: rgba(255,255,255,.4); font-size:.82rem; pad
         ★ 如果你有 logo PNG: <img src="images/logo.png" alt="Linkory Media" style="height:32px;">
           否则保留文字版：
       -->
-      Linkory <span>Media</span>
+      Linkory Media<span class="logo-divider">•</span><span class="logo-wendy">Wendy Eng</span>
     </div>
     <div class="nav-links">
       <a href="#about">关于Wendy</a>
@@ -356,11 +360,13 @@ footer { background: #07131f; color: rgba(255,255,255,.4); font-size:.82rem; pad
       <div class="hero-img-wrap">
         <div class="hero-img-frame">
           <!--
-            ★ 替换: <img src="images/wendy-hero.jpg" alt="Wendy Eng">
+            ★ 如果你之后换本地图片: <img src="images/wendy-hero.jpg" alt="Wendy Eng">
           -->
-          <div class="img-placeholder">
+          <img src="xxxxx" alt="Wendy Eng – Linkory Media"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="img-placeholder" style="display:none;">
             <div class="icon">📸</div>
-            <div>你的主照片<br><small>（3:4 竖向）<br>建议: wendy-hero.jpg</small></div>
+            <div>图片加载中…<br><small>请替换 src 为实际图片路径</small></div>
           </div>
         </div>
       </div>
@@ -440,7 +446,7 @@ footer { background: #07131f; color: rgba(255,255,255,.4); font-size:.82rem; pad
         <div class="desc">仅靠60秒口播<br>3个月涨粉</div>
       </div>
       <div class="stat-card">
-        <div class="big"><span>百万</span></div>
+        <div class="big"><span>1M</span>+</div>
         <div class="desc">视频播放量<br>最高单视频</div>
       </div>
       <div class="stat-card">
@@ -457,28 +463,30 @@ footer { background: #07131f; color: rgba(255,255,255,.4); font-size:.82rem; pad
     <p class="proof-label" style="margin-bottom:16px;">在这里找到我</p>
     <div class="social-handles">
       <a class="social-handle" href="https://instagram.com/wendyengmt" target="_blank">
-        <span class="sh-icon sh-ig">📷</span>
+        <span class="sh-icon sh-ig">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </span>
         @wendyengmt
       </a>
       <a class="social-handle" href="https://www.xiaohongshu.com" target="_blank">
-        <!--
-          ★ 替换小红书链接: 把 href 换成你的小红书主页 URL
-        -->
-        <span class="sh-icon sh-xhs" style="font-size:.65rem;font-weight:900;">书</span>
+        <!-- ★ 替换小红书链接: 把 href 换成你的小红书主页 URL -->
+        <span class="sh-icon sh-xhs">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M11.5 2C6.81 2 3 5.81 3 10.5c0 1.87.57 3.61 1.54 5.06L3 21l5.44-1.54A8.46 8.46 0 0011.5 20c4.69 0 8.5-3.81 8.5-8.5S16.19 2 11.5 2zm.5 13h-1v-5h1v5zm0-6.5h-1v-1h1v1z"/></svg>
+        </span>
         小红书
       </a>
       <a class="social-handle" href="https://www.tiktok.com/@wendyengmt" target="_blank">
-        <!--
-          ★ 替换TikTok链接: 把 @wendyengmt 换成你的真实 handle
-        -->
-        <span class="sh-icon sh-tk" style="font-size:.75rem;font-weight:900;">▶</span>
+        <!-- ★ 替换TikTok handle -->
+        <span class="sh-icon sh-tk">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.78a4.85 4.85 0 01-1.01-.09z"/></svg>
+        </span>
         TikTok
       </a>
       <a class="social-handle" href="https://www.facebook.com" target="_blank">
-        <!--
-          ★ 替换Facebook链接: 换成你的 FB 主页 URL
-        -->
-        <span class="sh-icon sh-fb" style="font-size:.85rem;font-weight:900;">f</span>
+        <!-- ★ 替换Facebook链接 -->
+        <span class="sh-icon sh-fb">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </span>
         Facebook
       </a>
     </div>
@@ -558,7 +566,7 @@ footer { background: #07131f; color: rgba(255,255,255,.4); font-size:.82rem; pad
           <li><strong>6年</strong>网络营销 & 内容创作经验</li>
           <li>帮助商家实现<strong>6位数变现</strong></li>
           <li>仅靠60秒口播，3个月<strong>涨粉10K</strong></li>
-          <li>超过<strong>百万播放量</strong>的视频内容</li>
+          <li>超过<strong>1M+ 播放量</strong>的视频内容</li>
           <li>与<strong>100+不同品牌</strong>公司合作</li>
           <li>制作超过<strong>2000+ 长短视频</strong></li>
         </ul>
@@ -695,7 +703,7 @@ footer { background: #07131f; color: rgba(255,255,255,.4); font-size:.82rem; pad
   <div class="container">
     <div class="reviews-top">
       <div class="tag">客户反馈</div>
-      <h2 class="h2">他们这样说<span class="gold"> 我们的一对一IP陪跑服务</span></h2>
+      <h2 class="h2">他们这样说<span class="gold"> Linkory Media</span></h2>
       <p>真实客户，真实改变</p>
     </div>
     <div class="reviews-grid">
@@ -851,13 +859,13 @@ footer { background: #07131f; color: rgba(255,255,255,.4); font-size:.82rem; pad
   <div class="container">
     <div class="faq-top">
       <div class="tag">常见问题</div>
-      <h2 class="h2">FAQ</span><span class="gold">常见问题</span></h2>
+      <h2 class="h2">你可能想<span class="gold">知道的</span></h2>
     </div>
     <div class="faq-list">
 
       <div class="faq-item">
         <button class="faq-trigger" onclick="toggleFaq(this)">
-          <span class="faq-q-text">Q1: 如何参加一对一IP陪跑？</span>
+          <span class="faq-q-text">如何参加一对一IP陪跑？</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-body"><div class="faq-body-inner">直接填写上方申请表，或通过 <a href="https://wa.me/60127677035" target="_blank">WhatsApp +6012-7677035</a> 联系，我们会安排一次30分钟会议进行一对一咨询。确认合作后，再进行付款与安排开始时间。IP陪跑为期至少2个月，全程一对一客制化指导。</div></div>
@@ -865,7 +873,7 @@ footer { background: #07131f; color: rgba(255,255,255,.4); font-size:.82rem; pad
 
       <div class="faq-item">
         <button class="faq-trigger" onclick="toggleFaq(this)">
-          <span class="faq-q-text">Q2: 如何购买产品？</span>
+          <span class="faq-q-text">如何购买产品？</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-body"><div class="faq-body-inner">手册与工具包可通过 Google Form 完成购买。手册将以 Google Drive 形式发送；工具包则会安排邮寄或面交（仅限马来西亚）。海外用户可通过 Instagram <a href="https://instagram.com/wendyboeng" target="_blank">@wendyboeng</a> 联系。</div></div>
@@ -873,7 +881,7 @@ footer { background: #07131f; color: rgba(255,255,255,.4); font-size:.82rem; pad
 
       <div class="faq-item">
         <button class="faq-trigger" onclick="toggleFaq(this)">
-          <span class="faq-q-text">Q3: 完全0基础，不会拍视频也可以吗？</span>
+          <span class="faq-q-text">完全0基础，不会拍视频也可以吗？</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-body"><div class="faq-body-inner">可以。无论是刚开始接触自媒体，还是已经在做内容但没有方向，都适合参与IP陪跑服务。可以从实战手册和工具包开始建立基础；执行过程中遇到卡点，则可以选择IP陪跑服务。</div></div>
@@ -881,7 +889,7 @@ footer { background: #07131f; color: rgba(255,255,255,.4); font-size:.82rem; pad
 
       <div class="faq-item">
         <button class="faq-trigger" onclick="toggleFaq(this)">
-          <span class="faq-q-text">Q4: 付款后可以退款吗？</span>
+          <span class="faq-q-text">付款后可以退款吗？</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-body"><div class="faq-body-inner">产品一经发货或面交确认后，不支持退款。IP陪跑服务属于时间与知识服务，一旦开始将按照完整2个月一对一服务流程执行，不提供退款、转让或中途终止。建议购买前确认产品与服务是否符合你的当前阶段与需求。</div></div>
@@ -889,7 +897,7 @@ footer { background: #07131f; color: rgba(255,255,255,.4); font-size:.82rem; pad
 
       <div class="faq-item">
         <button class="faq-trigger" onclick="toggleFaq(this)">
-          <span class="faq-q-text">Q5: 产品 / 服务保证结果吗？</span>
+          <span class="faq-q-text">产品 / 服务保证结果吗？</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-body"><div class="faq-body-inner">我们不保证结果。我们提供的是内容策略、执行方向与优化建议。内容效果、流量表现与账号成长，仍会受到个人执行力、行业市场、平台算法等因素影响。重点在于帮助你建立一套更有系统的内容方式。</div></div>
@@ -897,7 +905,7 @@ footer { background: #07131f; color: rgba(255,255,255,.4); font-size:.82rem; pad
 
       <div class="faq-item">
         <button class="faq-trigger" onclick="toggleFaq(this)">
-          <span class="faq-q-text">Q6: 会帮我代做内容吗？</span>
+          <span class="faq-q-text">会帮我代做内容吗？</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-body"><div class="faq-body-inner">不会。IP陪跑的重点是协助你建立内容逻辑、IP定位与执行能力。过程中会协助你优化内容方向、选题、脚本结构、标题、文案、封面与影片呈现方式，以及分享如何用AI辅助内容制作流程。但拍摄、剪辑、发布等执行工作仍需由你完成。</div></div>
