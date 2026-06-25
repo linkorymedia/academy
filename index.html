@@ -14,7 +14,7 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;overflow-x:hidden}
-body{font-family:'Noto Sans SC',sans-serif;background:var(--cream);color:var(--text);line-height:1.7;font-size:16px;overflow-x:hidden}
+body{font-family:'Noto Sans SC',sans-serif;background:var(--cream);color:var(--text);line-height:1.7;font-size:16px;overflow-x:hidden;padding-top:57px}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 .container{max-width:var(--max);margin:0 auto;padding:0 24px}
@@ -32,7 +32,7 @@ a{color:inherit;text-decoration:none}
 .btn-lg{padding:18px 36px;font-size:1.05rem}
 
 /* NAV */
-nav{position:sticky;top:0;z-index:100;background:rgba(11,31,58,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,.2);padding:12px 0}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(11,31,58,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,.2);padding:12px 0}
 nav .inner{max-width:var(--max);margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
 .nav-logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
 .nav-logo img{height:32px;width:auto;object-fit:contain}
@@ -45,7 +45,8 @@ nav .inner{max-width:var(--max);margin:0 auto;padding:0 16px;display:flex;align-
 .nav-cta{background:var(--gold);color:var(--navy);font-weight:700;padding:8px 18px;border-radius:100px;font-size:.82rem;transition:opacity .15s;white-space:nowrap;flex-shrink:0}
 .nav-cta:hover{opacity:.88}
 @media(max-width:600px){
-  .nav-logo{display:none}
+  .nav-logo img{display:none}
+  .nav-logo-text{font-size:.82rem}
   .nav-cta{padding:8px 14px;font-size:.78rem}
 }
 
@@ -74,7 +75,6 @@ nav .inner{max-width:var(--max);margin:0 auto;padding:0 16px;display:flex;align-
 .hero-img-col{display:flex;justify-content:center;align-items:flex-end}
 .hero-img-frame{width:100%;max-width:420px;aspect-ratio:3/4;border-radius:20px;overflow:hidden;background:var(--navy2);position:relative}
 .hero-img-frame img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
-.hero-img-frame::after{content:'';position:absolute;bottom:0;left:0;right:0;height:30%;background:linear-gradient(to top,var(--navy) 0%,transparent 100%);pointer-events:none}
 
 /* PAIN */
 #pain{background:var(--navy);padding:80px 0}
@@ -358,7 +358,7 @@ nav .inner{max-width:var(--max);margin:0 auto;padding:0 16px;display:flex;align-
 #cta p{color:rgba(255,255,255,.65);margin-bottom:36px}
 .cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 .wa-line{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:20px;color:rgba(255,255,255,.4);font-size:.8rem;flex-wrap:wrap}
-.wa-line a{color:rgba(255,255,255,.65)}
+.wa-line a{color:var(--gold)}
 
 /* FOOTER */
 footer{background:#07131f;color:rgba(255,255,255,.4);font-size:.8rem;padding:28px 0}
@@ -640,14 +640,14 @@ footer{background:#07131f;color:rgba(255,255,255,.4);font-size:.8rem;padding:28p
       <a class="media-card" href="https://www.facebook.com/vsmediataiwan/videos/555474517010865/" target="_blank">
         <div class="media-badge-pill">台湾媒体</div>
         <h3>VS MEDIA Taiwan 转发报道</h3>
-        <p>在台湾台北旅游时，记录下一路遇到的温暖善意——在这座繁忙的城市里，陌生人的好心帮助令人动容。分享了「台湾最美的风景是人」这一感受，内容引发广泛共鸣，被亚太地区深具影响力的 MCN 数字媒体网络台湾分公司 VS MEDIA Taiwan 主动关注并转发传播。</p>
+        <p>在台湾台北旅游时，记录下一路遇到当地陌生人的温暖善意。分享了「台湾最美的风景是人」这一感受，内容引发广泛共鸣，被亚太地区深具影响力的 MCN 数字媒体网络台湾分公司 VS MEDIA Taiwan 主动关注并转发传播。</p>
         <div class="media-link">查看报道 →</div>
       </a>
       <a class="media-card" href="https://www.redchili21.com/2022/10/watsons-8-brands-of-unpopular-items-selling-in-shops/" target="_blank">
         <div class="media-badge-pill">马来西亚媒体</div>
         <h3>Red Chili 21 · 马来西亚知名媒体平台</h3>
         <p>在小红书上分享了 Watsons 里一些被低估但值得入手的冷门好物，内容引发广泛共鸣与高度互动，被马来西亚知名媒体平台 Red Chili 21 主动发现并收录报道。</p>
-        <div class="media-link">查看报道 →</div>
+        <div class="media-link">查看文章 →</div>
       </a>
       <a class="media-card" href="https://www.facebook.com/GoTrazMy/posts/pfbid0PkB7ANCjjdj8j8o5mFmT5j1RNMWsDEGAAs171dht2XSx8STCGcewom3vJZLzhLmel" target="_blank">
         <div class="media-badge-pill">本地媒体转发</div>
@@ -1016,8 +1016,8 @@ footer{background:#07131f;color:rgba(255,255,255,.4);font-size:.8rem;padding:28p
             <label>你希望通过商业个人IP达到什么目标？ <span>*</span></label>
             <textarea id="f-goal" placeholder="例如：希望建立线上客户来源、打造个人品牌……" required></textarea>
           </div>
-          <button type="submit" class="form-submit" id="submitBtn">提交申请 →</button>
-          <p class="form-disclaimer">提交后，Wendy 会在 2–3 个工作日内亲自审核并联络合适的申请者。</p>
+          <button type="submit" class="form-submit" id="submitBtn">提交申请，通过 WhatsApp 联系 →</button>
+          <p class="form-disclaimer">点击后将自动跳转 WhatsApp，把你的资料发送给 Wendy。Wendy 会在 2–3 个工作日内亲自审核并回复合适的申请者。</p>
         </form>
         <div id="formSuccess" style="display:none;text-align:center;padding:40px 20px;">
           <div style="font-size:3rem;margin-bottom:16px;">✅</div>
@@ -1149,12 +1149,8 @@ footer{background:#07131f;color:rgba(255,255,255,.4);font-size:.8rem;padding:28p
       <!--
         ★ 替换额外2张照片 - 把下面的 YOUR_PHOTO_URL_7 和 YOUR_PHOTO_URL_8 换成你的图片URL
       -->
-      <div class="ps-item" style="background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.3);font-size:.75rem;text-align:center;padding:12px;">
-        <span>📸<br>Photo 7<br><small>替换URL</small></span>
-      </div>
-      <div class="ps-item" style="background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.3);font-size:.75rem;text-align:center;padding:12px;">
-        <span>📸<br>Photo 8<br><small>替换URL</small></span>
-      </div>
+      <div class="ps-item"><img src="https://blogger.googleusercontent.com/img/a/AVvXsEja59qZL8xrCmZ36gBbljwrN3mpbqqqkeEDqYFdPrH9797gxzWalh_IDyiPW9wspXKb6SRwd6gita1KgkLE3YUS71xZA8_eC3lTeTie3Kemc-X7HXMidOMb2t3w_wXEIalNnEZ5YG2KQq3ZJ4RbiW_IO8IpZJ0wcRkFsZMnFBIj8oK_eY90Hc24DWIyUf4" alt="photo7"></div>
+      <div class="ps-item"><img src="https://blogger.googleusercontent.com/img/a/AVvXsEi3z73gUz9wAdN9cFO7bI9tlkqKmqyrqxZelRPPvZ2_RrOtVTqSAVmOYYfO5q9QL5s6-7AYkpo-RNek83rWsy_HiPb_PLSqKszbqRj-zT0U1T4W1t10aUv2EgVR5rNaC5I4iHP5NgPNMbBBj5B5oQ9sJmHgTRWRKXdvaGCUOYpTz9J3QhT2FFAnAy4HmQM" alt="photo8"></div>
       <!-- duplicate for seamless -->
       <div class="ps-item"><img src="https://blogger.googleusercontent.com/img/a/AVvXsEg9x75a2Yxx4fZFof60bXSrRyg9XOCaxRm1dcOKGY9ISNPlLCbItJ7UtTWsDnhTuG7SJWm5OgR3vCwah31zr0ur0JiTYbSlG018K8BwOUYfQr6mMuvJYUcFVtEVfvqG9N8LMJVJ5DtwOblbW8xZr3-ojp7Pbv7Ta3JQibAjAnX0T98zOsI9GXyQCkdLxXY" alt="photo1"></div>
       <div class="ps-item"><img src="https://blogger.googleusercontent.com/img/a/AVvXsEj0y1hXunaIOLqCINbI0f6SMBhzHFvoX8AJyaBvMSfVN4BxmggSMYCmEKO3FRbrBDja1atQ7DtTUN7NQX-GmUj8vnMsr5NFki-TO_gZqsl68_W2-cSzPqCfMrYyCE6Wt2m4y6koPJrda8tULFmLrvMVS36y5YfSXUNItjly7814_RUBztgBHrZJ4fsk6Hk" alt="photo2"></div>
@@ -1162,8 +1158,8 @@ footer{background:#07131f;color:rgba(255,255,255,.4);font-size:.8rem;padding:28p
       <div class="ps-item"><img src="https://blogger.googleusercontent.com/img/a/AVvXsEg9jGhK-_p61tk9mh5DFiWStxi_3rd7gN253XK_24ap8m3JuOxLCZUephGUIWtzof6UZzvsghDKdJBr-X8k9Z-046ZfsIHDxEC57CbkolZ9c_5fBYaqqyTIeTAOvfGRfyLR2rp126690e02nVDt0EwmGZrKCxLQql5P1pUQrhyKIH4vId1uTWCDbBpr_r4" alt="photo4"></div>
       <div class="ps-item"><img src="https://blogger.googleusercontent.com/img/a/AVvXsEhsxWRdUXGCRbi1SdJ-uGmLHyRYJssW115xYyPSA82zPDAtotjx8R5ZnL2Cy1wIQ80YO_5NRssM2HWfOMYuPE2eH7Ku5CoFv52HdEtRMHntF2_wRyFv5RRqpvYlK_c8C4On_Kp1U5GJc5xKHV2TFvb0hpQ8e1-GhLPbnkIR_09F8SVTOExOKNJSBcMEG0A" alt="photo5"></div>
       <div class="ps-item"><img src="https://blogger.googleusercontent.com/img/a/AVvXsEgLMCLeOWgzTkamOXHpUib20Kd36wA-PnpQ2KiOJMw4Xk2q4TfLW8CAcd6u9hKxxsHld2vmWlNRWpSeuuoIsXoo2_lt04fq13mIv3FwsgxNwzKf1kVR7fxxOtkNPad9ASnK89DIha0qXW_KbxZwtn8PQILi7UefyaDBDhlvq2GYnSRWbtofOBwOxRuG6Kw" alt="photo6"></div>
-      <div class="ps-item" style="background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.3);font-size:.75rem;text-align:center;padding:12px;"><span>📸<br>Photo 7</span></div>
-      <div class="ps-item" style="background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.3);font-size:.75rem;text-align:center;padding:12px;"><span>📸<br>Photo 8</span></div>
+      <div class="ps-item"><img src="https://blogger.googleusercontent.com/img/a/AVvXsEja59qZL8xrCmZ36gBbljwrN3mpbqqqkeEDqYFdPrH9797gxzWalh_IDyiPW9wspXKb6SRwd6gita1KgkLE3YUS71xZA8_eC3lTeTie3Kemc-X7HXMidOMb2t3w_wXEIalNnEZ5YG2KQq3ZJ4RbiW_IO8IpZJ0wcRkFsZMnFBIj8oK_eY90Hc24DWIyUf4" alt="photo7"></div>
+      <div class="ps-item"><img src="https://blogger.googleusercontent.com/img/a/AVvXsEi3z73gUz9wAdN9cFO7bI9tlkqKmqyrqxZelRPPvZ2_RrOtVTqSAVmOYYfO5q9QL5s6-7AYkpo-RNek83rWsy_HiPb_PLSqKszbqRj-zT0U1T4W1t10aUv2EgVR5rNaC5I4iHP5NgPNMbBBj5B5oQ9sJmHgTRWRKXdvaGCUOYpTz9J3QhT2FFAnAy4HmQM" alt="photo8"></div>
     </div>
   </div>
 </section>
@@ -1252,28 +1248,27 @@ const countObs=new IntersectionObserver(entries=>{
 },{threshold:.3});
 countEls.forEach(el=>countObs.observe(el));
 
-/* ── FORM → GOOGLE SHEETS ── */
-const GOOGLE_SCRIPT_URL='https://script.google.com/macros/s/AKfycbyHOgZqGmgM6auiHeKVQY4nXze1lSwf24GZuAdojONxT4s3GSP8l2IlvYCUh1LD23EN/exec';
-document.getElementById('consultForm').addEventListener('submit',async function(e){
+/* ── FORM → WHATSAPP ── */
+document.getElementById('consultForm').addEventListener('submit',function(e){
   e.preventDefault();
-  const btn=document.getElementById('submitBtn');
-  btn.disabled=true;btn.textContent='提交中…';
-  const payload={
-    name:document.getElementById('f-name').value,
-    brand:document.getElementById('f-brand').value,
-    industry:document.getElementById('f-industry').value,
-    phone:document.getElementById('f-phone').value,
-    problem:document.getElementById('f-problem').value,
-    goal:document.getElementById('f-goal').value,
-  };
-  try{
-    await fetch(GOOGLE_SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
-    document.getElementById('consultForm').style.display='none';
-    document.getElementById('formSuccess').style.display='block';
-  }catch(err){
-    document.getElementById('formError').style.display='block';
-    btn.disabled=false;btn.textContent='提交申请 →';
-  }
+  const name=document.getElementById('f-name').value.trim();
+  const brand=document.getElementById('f-brand').value.trim();
+  const industry=document.getElementById('f-industry').value;
+  const phone=document.getElementById('f-phone').value.trim();
+  const problem=document.getElementById('f-problem').value.trim();
+  const goal=document.getElementById('f-goal').value.trim();
+  const msg=
+    '你好 Wendy，我想申请免费咨询 😊\n\n'+
+    '姓名：'+name+'\n'+
+    (brand?'品牌/公司：'+brand+'\n':'')+
+    '行业：'+industry+'\n'+
+    'WhatsApp：'+phone+'\n\n'+
+    '目前最大的内容问题：\n'+problem+'\n\n'+
+    '希望达到的目标：\n'+goal;
+  const url='https://wa.me/60127677035?text='+encodeURIComponent(msg);
+  window.open(url,'_blank');
+  document.getElementById('consultForm').style.display='none';
+  document.getElementById('formSuccess').style.display='block';
 });
 
 /* ── SOCIAL PROOF POPUP ── */
