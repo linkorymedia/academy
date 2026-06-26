@@ -68,12 +68,16 @@ nav .inner{max-width:var(--max);margin:0 auto;padding:0 16px;display:flex;align-
 .hero-hook{font-size:1rem;color:var(--white);font-weight:700;margin-bottom:4px}
 .hero-hook span{color:var(--gold-lt)}
 .hero-desc{font-size:.85rem;color:rgba(255,255,255,.58);margin-bottom:28px;line-height:1.65}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px}
-.hero-stats{display:flex;gap:0;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;overflow:hidden;width:100%}
+
+/* CHANGE 1: stats ABOVE buttons */
+.hero-stats{display:flex;gap:0;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;overflow:hidden;width:100%;margin-bottom:24px}
 .hero-stat{flex:1;padding:14px 10px;text-align:center;border-right:1px solid rgba(255,255,255,.08)}
 .hero-stat:last-child{border-right:none}
 .hero-stat .num{font-size:1.35rem;font-weight:900;color:var(--gold);line-height:1}
 .hero-stat .lbl{font-size:.62rem;color:rgba(255,255,255,.48);margin-top:3px;line-height:1.3}
+
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+
 /* Hero image right side */
 .hero-img-col{display:flex;justify-content:center;align-items:flex-end}
 .hero-img-frame{width:100%;max-width:420px;aspect-ratio:3/4;border-radius:20px;overflow:hidden;background:var(--navy2);position:relative}
@@ -90,15 +94,40 @@ nav .inner{max-width:var(--max);margin:0 auto;padding:0 16px;display:flex;align-
 .pain-insight{background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.25);border-radius:var(--radius);padding:24px 32px;text-align:center;font-size:1rem;color:rgba(255,255,255,.85)}
 .pain-insight strong{color:var(--gold)}
 
-/* FOR YOU */
+/* FOR YOU / NOT FOR YOU — COMBINED COMPARISON */
 #for-you{background:var(--white);padding:80px 0}
 .fy-top{text-align:center;margin-bottom:48px}
 .fy-top .h2 span{color:var(--gold)}
-.fy-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:860px;margin:0 auto}
-.fy-card{background:var(--cream);border:1px solid rgba(0,0,0,.06);border-radius:var(--radius);padding:24px;display:flex;gap:14px;align-items:flex-start}
-.fy-check{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:rgba(201,168,76,.15);border:1.5px solid rgba(201,168,76,.4);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:.85rem;margin-top:2px}
-.fy-card p{font-size:.92rem;color:var(--text);line-height:1.65}
-.fy-card p strong{color:var(--navy);display:block;margin-bottom:4px}
+
+/* CHANGE 2: Side-by-side comparison layout */
+.compare-wrap{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:920px;margin:0 auto 40px;border-radius:var(--radius);overflow:hidden;border:1px solid rgba(0,0,0,.08);box-shadow:0 4px 24px rgba(0,0,0,.07)}
+.compare-col{display:flex;flex-direction:column}
+.compare-col-yes{background:var(--white)}
+.compare-col-no{background:#0d0d0d}
+.compare-col-header{padding:20px 24px;display:flex;align-items:center;gap:10px}
+.compare-col-yes .compare-col-header{background:#f0faf4;border-bottom:1px solid rgba(0,0,0,.07)}
+.compare-col-no .compare-col-header{background:rgba(201,168,76,.1);border-bottom:1px solid rgba(201,168,76,.18)}
+.compare-col-header .ch-icon{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:900;flex-shrink:0}
+.compare-col-yes .ch-icon{background:rgba(34,197,94,.15);color:#16a34a}
+.compare-col-no .ch-icon{background:rgba(220,50,50,.18);color:#e03030}
+.compare-col-header h3{font-size:1rem;font-weight:900}
+.compare-col-yes .compare-col-header h3{color:var(--navy)}
+.compare-col-no .compare-col-header h3{color:var(--white)}
+.compare-items{display:flex;flex-direction:column;padding:12px 0}
+.compare-item{display:flex;align-items:flex-start;gap:12px;padding:14px 24px}
+.compare-col-yes .compare-item{border-bottom:1px solid rgba(0,0,0,.05)}
+.compare-col-no .compare-item{border-bottom:1px solid rgba(255,255,255,.06)}
+.compare-col-yes .compare-item:last-child,.compare-col-no .compare-item:last-child{border-bottom:none}
+.ci-icon{flex-shrink:0;margin-top:2px;font-size:.85rem;width:20px;text-align:center}
+.compare-item-text{font-size:.88rem;line-height:1.55}
+.compare-col-yes .compare-item-text{color:var(--text)}
+.compare-col-yes .compare-item-text strong{color:var(--navy);display:block;margin-bottom:2px;font-size:.9rem}
+.compare-col-no .compare-item-text{color:rgba(255,255,255,.6)}
+.compare-col-no .compare-item-text strong{color:var(--white);display:block;margin-bottom:2px;font-size:.9rem}
+
+.compare-cta{max-width:920px;margin:0 auto;background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.25);border-radius:var(--radius);padding:28px 36px;text-align:center}
+.compare-cta p{color:var(--text);margin-bottom:20px;font-size:.95rem}
+.compare-cta strong{color:var(--navy)}
 
 /* PROOF */
 #proof{background:var(--white);padding:80px 0}
@@ -256,24 +285,6 @@ nav .inner{max-width:var(--max);margin:0 auto;padding:0 16px;display:flex;align-
 .review-photo{border-radius:12px;overflow:hidden;background:#ffffff;display:flex;align-items:center;justify-content:center}
 .review-photo img{width:100%;height:auto;display:block;object-fit:contain}
 
-/* NOT FOR YOU */
-#not-for-you{background:#0d0d0d;color:var(--white);padding:80px 0}
-.nfy-top{text-align:center;margin-bottom:40px}
-.nfy-top .h2{color:var(--white)}
-.nfy-top .h2 span{color:var(--gold)}
-.nfy-top p{color:rgba(255,255,255,.5);margin-top:10px}
-.nfy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:36px}
-.nfy-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:var(--radius);padding:22px 18px;display:flex;gap:12px;align-items:flex-start}
-.nfy-x{flex-shrink:0;width:30px;height:30px;border-radius:50%;background:rgba(200,50,50,.18);display:flex;align-items:center;justify-content:center;font-size:.9rem;margin-top:2px}
-.nfy-card p{font-size:.88rem;color:rgba(255,255,255,.6);line-height:1.6}
-.nfy-card p strong{color:var(--white);display:block;margin-bottom:4px}
-.nfy-bottom{background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.2);border-radius:var(--radius);padding:28px 36px;text-align:center}
-.nfy-bottom p{color:rgba(255,255,255,.7);margin-bottom:20px}
-.nfy-bottom strong{color:var(--gold)}
-
-/* FOR YOU (who it's for) */
-#for-you{background:var(--white);padding:80px 0}
-
 /* APPLY */
 #apply{background:var(--navy);padding:80px 0}
 .apply-inner{display:grid;grid-template-columns:1fr 1.3fr;gap:60px;align-items:start}
@@ -389,11 +400,11 @@ footer{background:#07131f;color:rgba(255,255,255,.4);font-size:.8rem;padding:28p
   .hero-img-col{order:-1}
   .hero-img-frame{max-width:300px;margin:0 auto}
   .pain-grid{grid-template-columns:repeat(2,1fr)}
-  .fy-grid,.reviews-grid,.apply-inner,.about-content,.about-photo-quote{grid-template-columns:1fr}
+  .reviews-grid,.apply-inner,.about-content,.about-photo-quote{grid-template-columns:1fr}
   .stats-grid{grid-template-columns:repeat(2,1fr)}
   .screenshots-grid{grid-template-columns:repeat(2,1fr)}
   .media-cards,.yt-grid{grid-template-columns:1fr}
-  .phases,.nfy-grid,.products-grid{grid-template-columns:1fr}
+  .phases,.products-grid{grid-template-columns:1fr}
   .wnr-problems{grid-template-columns:1fr}
   .review-photos{grid-template-columns:repeat(2,1fr)}
   .footer-inner{flex-direction:column;align-items:center;text-align:center}
@@ -401,6 +412,9 @@ footer{background:#07131f;color:rgba(255,255,255,.4);font-size:.8rem;padding:28p
   .sp-popup{max-width:calc(100vw - 36px)}
   .coaching-card-grid{grid-template-columns:1fr}
   .about-checks{grid-template-columns:1fr}
+  /* Stack comparison on mobile */
+  .compare-wrap{grid-template-columns:1fr}
+  .compare-col-no .compare-col-header{border-top:1px solid rgba(201,168,76,.18)}
 }
 @media(max-width:600px){
   .container{padding:0 16px}
@@ -457,16 +471,19 @@ footer{background:#07131f;color:rgba(255,255,255,.4);font-size:.8rem;padding:28p
         <p class="hero-sub">从内容开始，建立信任，让客户主动找到你</p>
         <br><p class="hero-hook">2个月，我陪你从0建立<span>属于你的商业个人IP</span></p>
         <p class="hero-desc">从定位、内容规划、镜头表达，到持续优化<br>全程一对一，手把手带着你走。</p>
-        <div class="hero-btns">
-          <a class="btn btn-gold btn-lg" href="#apply">申请免费30分钟咨询 →</a>
-          <a class="btn btn-outline-white" href="#coaching">了解陪跑服务</a>
-        </div>
+
+        <!-- CHANGE 1: Stats moved ABOVE buttons -->
         <div class="hero-stats">
           <div class="hero-stat"><div class="num" data-target="6" data-suffix="年">6年</div><div class="lbl">营销经验</div></div>
           <div class="hero-stat"><div class="num" data-target="10" data-suffix="K+">10K+</div><div class="lbl">3月涨粉</div></div>
           <div class="hero-stat"><div class="num" data-target="100" data-suffix="+">100+</div><div class="lbl">品牌合作</div></div>
           <div class="hero-stat"><div class="num" data-target="6" data-suffix="位数">6位数</div><div class="lbl">流量变现</div></div>
           <div class="hero-stat"><div class="num" data-target="2000" data-suffix="+">2000+</div><div class="lbl">长短视频</div></div>
+        </div>
+
+        <div class="hero-btns">
+          <a class="btn btn-gold btn-lg" href="#apply">申请免费30分钟咨询 →</a>
+          <a class="btn btn-outline-white" href="#coaching">了解陪跑服务</a>
         </div>
       </div>
       <div class="hero-img-col">
@@ -545,7 +562,7 @@ footer{background:#07131f;color:rgba(255,255,255,.4);font-size:.8rem;padding:28p
     <div class="screenshots-grid" style="margin-bottom:48px;">
       <div class="screenshot-slot"><img src="https://blogger.googleusercontent.com/img/a/AVvXsEiGFDRdvupTON960CL-KODopyKjHX3HiGaQWscDtKXERQ2978wi-EzK0M43mIDLDcxWhp3fjj05__0Zn09HpG6CKoaEeIVyyOeqUPQo0Zg6EPyq7FC3N_warEkaV3ceeN1O7kZUohSRnFxG0MjxqId8NjnjtXhK1X_mmi7knUunlVsIxlYwbG4BnPynUHE" alt="成绩截图1"></div>
       <div class="screenshot-slot"><img src="https://blogger.googleusercontent.com/img/a/AVvXsEhsRUAw4fwjn86cUIcmy07joiXhFD2QI2X7w2ojt24fpG4b6qwudoDzpiSjqvy1Af-_G2qn0BjQO2w1bzeME7f9UX2XTxqUdqUYQr3LEQiRKlEYlgGdlCqh_JPr-o5dKk5gYZ5KZQJh3cjV0NAjNP9iADvvHQIh2HMy-0_DQlXrcScU5jS0uw86kIUWaG0" alt="成绩截图2"></div>
-      <div class="screenshot-slot"><img src="https://blogger.googleusercontent.com/img/a/AVvXsEhIuPhzG6Yo0gbm0uOnaCjQi-jhE1ZthRvdv9tTYH7NWvHDIo0iGqLOQ5EjvKOGTjD5TmKbT-gly-5k58irpeKWu4gXxm0_ttZS-duy9ZlmO6uG2BCwzLMfDQN7LmyEmD393Vra_EYcU0j5bXjog6zMsAxPwKw10P0sch41qpQzCcpybJgEZwB6VI0M1_g" alt="成绩截图3"></div>
+      <div class="screenshot-slot"><img src="https://blogger.googleusercontent.com/img/a/AVvXsEhIuPhzG6Yo0gbm0uOnaCjQi-jhE1ZthRvdv9tTYH7NWvHDIo0iGqLOQ5EjvKAGTjD5TmKbT-gly-5k58irpeKWu4gXxm0_ttZS-duy9ZlmO6uG2BCwzLMfDQN7LmyEmD393Vra_EYcU0j5bXjog6zMsAxPwKw10P0sch41qpQzCcpybJgEZwB6VI0M1_g" alt="成绩截图3"></div>
       <div class="screenshot-slot"><img src="https://blogger.googleusercontent.com/img/a/AVvXsEhEgF38jyL4Gb0PaoilkcQxTmKFVEJPSMJzGAJU5Vdj7GGZ-BspNP7dNZEaBVYPE9pSBG41VXtR1JstWI7jJtmqaVt489kb4gSLr1WNX0AqdQdRTyL7BkvocaIW4ZqD1rF9nPsn7Z_oga-v89KWr87Ut2nmZhZPngHmvi2RVueawSQb3T5Xm7jJV2LqaUs" alt="成绩截图4"></div>
     </div>
 
@@ -747,7 +764,6 @@ footer{background:#07131f;color:rgba(255,255,255,.4);font-size:.8rem;padding:28p
           <span>每月内容选题规划</span>
           <span>内容结构与脚本优化</span>
           <span>发布前后指导：视频剪辑、文案、标题、封面设计等调整</span>
-        
         </div>
         <p class="phase-desc">掌握开头3秒Hook、口播结构与高效制作方法，学会持续输出有结构、适用于 IG、TikTok、小红书、FB 的内容。</p>
       </div>
@@ -866,59 +882,75 @@ footer{background:#07131f;color:rgba(255,255,255,.4);font-size:.8rem;padding:28p
   </div>
 </section>
 
-<!-- FOR YOU (适合谁) -->
-<section id="for-you" style="background:var(--white);padding:80px 0;">
+<!-- CHANGE 2: FOR YOU + NOT FOR YOU — Combined side-by-side comparison -->
+<section id="for-you">
   <div class="container">
     <div class="fy-top">
-      <div class="tag">我们的服务适合谁</div>
-      <h2 class="h2">适合你，<span>如果你…</span></h2>
+      <div class="tag">适合 vs 不适合</div>
+      <h2 class="h2">这个服务，<span>适合你吗？</span></h2>
+      <p style="color:var(--muted);margin-top:10px;">诚实说明，帮你判断现在是否适合加入</p>
     </div>
-    <div class="fy-grid">
-      <div class="fy-card">
-        <div class="fy-check">✓</div>
-        <p><strong>想做个人IP，但不知道怎么开始</strong>从零开始没关系，我们会帮你建立完整的起步方向与内容策略。</p>
-      </div>
-      <div class="fy-card">
-        <div class="fy-check">✓</div>
-        <p><strong>定位不清晰，内容没有方向</strong>做了很多内容但感觉哪里不对？我们帮你重新梳理定位，让每一条内容都有意义。</p>
-      </div>
-      <div class="fy-card">
-        <div class="fy-check">✓</div>
-        <p><strong>想建立线上客户来源与商业机会</strong>不再依赖广告，而是通过内容持续吸引真正对你感兴趣的客户主动找你。</p>
-      </div>
-      <div class="fy-card">
-        <div class="fy-check">✓</div>
-        <p><strong>希望建立长期商业个人品牌</strong>让你的专业与影响力成为最持久的商业资产，在你的行业中建立独特的位置。</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- NOT FOR YOU -->
-<section id="not-for-you">
-  <div class="container">
-    <div class="nfy-top">
-      <div class="tag" style="border-color:rgba(255,255,255,.15);color:rgba(255,255,255,.5);">诚实说明</div>
-      <h2 class="h2">不适合你，<span>如果你…</span></h2>
+    <!-- Side-by-side comparison -->
+    <div class="compare-wrap">
+      <!-- LEFT: 适合 -->
+      <div class="compare-col compare-col-yes">
+        <div class="compare-col-header">
+          <div class="ch-icon">✓</div>
+          <h3>适合你，如果你…</h3>
+        </div>
+        <div class="compare-items">
+          <div class="compare-item">
+            <span class="ci-icon" style="color:#16a34a;">✓</span>
+            <div class="compare-item-text"><strong>想做个人IP，但不知道怎么开始</strong>从零开始没关系，我们会帮你建立完整的起步方向与内容策略。</div>
+          </div>
+          <div class="compare-item">
+            <span class="ci-icon" style="color:#16a34a;">✓</span>
+            <div class="compare-item-text"><strong>定位不清晰，内容没有方向</strong>做了很多内容但感觉哪里不对？我们帮你重新梳理定位，让每一条内容都有意义。</div>
+          </div>
+          <div class="compare-item">
+            <span class="ci-icon" style="color:#16a34a;">✓</span>
+            <div class="compare-item-text"><strong>想建立线上客户来源与商业机会</strong>不再依赖广告，而是通过内容持续吸引真正对你感兴趣的客户主动找你。</div>
+          </div>
+          <div class="compare-item">
+            <span class="ci-icon" style="color:#16a34a;">✓</span>
+            <div class="compare-item-text"><strong>希望建立长期商业个人品牌</strong>让你的专业与影响力成为最持久的商业资产，在你的行业中建立独特的位置。</div>
+          </div>
+        </div>
+      </div>
 
+      <!-- RIGHT: 不适合 -->
+      <div class="compare-col compare-col-no">
+        <div class="compare-col-header">
+          <div class="ch-icon">✕</div>
+          <h3>不适合你，如果你…</h3>
+        </div>
+        <div class="compare-items">
+          <div class="compare-item">
+            <span class="ci-icon" style="color:#e03030;">✕</span>
+            <div class="compare-item-text"><strong>期待短期内一夜爆红</strong>打造商业IP是长期积累的过程，我们提供的是系统与方法，不是速成捷径。</div>
+          </div>
+          <div class="compare-item">
+            <span class="ci-icon" style="color:#e03030;">✕</span>
+            <div class="compare-item-text"><strong>希望找人全权代做内容</strong>陪跑的核心是教你建立自己的内容能力，拍摄、剪辑与发布，最终还是需要你亲自执行。</div>
+          </div>
+          <div class="compare-item">
+            <span class="ci-icon" style="color:#e03030;">✕</span>
+            <div class="compare-item-text"><strong>完全不考虑亲自露脸</strong>商业个人IP的本质是人的影响力。老板亲自出镜，才能真正建立信任感与长期连接。</div>
+          </div>
+          <!-- Spacer to balance height with 4 yes-items -->
+          <div class="compare-item" style="opacity:0;pointer-events:none;">
+            <span class="ci-icon">·</span>
+            <div class="compare-item-text"> </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="nfy-grid">
-      <div class="nfy-card">
-        <div class="nfy-x">✕</div>
-        <p><strong>期待短期内一夜爆红</strong>打造商业IP是长期积累的过程，我们提供的是系统与方法，不是速成捷径。</p>
-      </div>
-      <div class="nfy-card">
-        <div class="nfy-x">✕</div>
-        <p><strong>希望找人全权代做内容</strong>陪跑的核心是教你建立自己的内容能力，拍摄、剪辑与发布，最终还是需要你亲自执行。</p>
-      </div>
-      <div class="nfy-card">
-        <div class="nfy-x">✕</div>
-        <p><strong>完全不考虑亲自露脸</strong>商业个人IP的本质是人的影响力。老板亲自出镜，才能真正建立信任感与长期连接。</p>
-      </div>
-    </div>
-    <div class="nfy-bottom">
-      <p>如果你已经准备好了，<br><strong>现在就申请免费一对一咨询聊聊你的情况。</strong></p>
-      <a class="btn btn-gold" href="#apply">申请免费30分钟一对一咨询 →</a>
+
+    <!-- CTA below the comparison -->
+    <div class="compare-cta">
+      <p>如果你已经准备好了，<br><strong>现在就申请免费一对一咨询，聊聊你的情况。</strong></p>
+      <a class="btn btn-gold btn-lg" href="#apply">申请免费30分钟一对一咨询 →</a>
     </div>
   </div>
 </section>
@@ -1094,6 +1126,7 @@ footer{background:#07131f;color:rgba(255,255,255,.4);font-size:.8rem;padding:28p
     </div>
   </div>
 </section>
+
 <!-- ABOUT -->
 <section id="about" style="background:var(--cream);padding:80px 0;">
   <div class="container">
@@ -1109,22 +1142,18 @@ footer{background:#07131f;color:rgba(255,255,255,.4);font-size:.8rem;padding:28p
         <div class="about-roles">Linkory Media 创始人 ｜ 商业个人IP操盘手<br>自媒体品牌策略顾问 ｜ 内容创作者</div>
         <div class="about-quote" style="margin-bottom:20px;">
           <p>从 0 开始打造个人IP，到经营多个账号累积超过万名粉丝，并持续通过内容获得商业合作与客户咨询。<br><br><strong>做个人IP不是为了成为网红，而是让你的客户认识你、信任你，并选择你。</strong></p>
-         
         </div>
         <p>过去 6 年专注于内容营销、短视频创作与个人品牌打造。</p>
         <p>在进入自媒体行业之前，我曾担任 2 年网络编辑，累积超过百万阅读量。那段经历让我深刻体会到：内容不只是传播信息，更能建立信任、塑造品牌，并创造真实的商业价值。</p>
         <p>2020年起，我正式踏入自媒体行业，从经营个人账号、参与品牌合作，到为企业制作长短视频，一路累积内容与品牌经验，如今帮助企业家和老板打造商业个人IP。</p>
-              <br>
+        <br>
         <p><strong>现在，我把过去6年验证过的方法，1对1陪你建立属于自己的商业个人IP。</strong></p>
- <br>
+        <br>
         <a class="btn btn-gold" href="#apply">了解一对一IP陪跑 →</a>
-
-        </div>
       </div>
     </div>
   </div>
 </section>
-
 
 <!-- PHOTO SCROLL (before CTA) -->
 <section id="photo-scroll">
@@ -1141,9 +1170,6 @@ footer{background:#07131f;color:rgba(255,255,255,.4);font-size:.8rem;padding:28p
       <div class="ps-item"><img src="https://blogger.googleusercontent.com/img/a/AVvXsEg9jGhK-_p61tk9mh5DFiWStxi_3rd7gN253XK_24ap8m3JuOxLCZUephGUIWtzof6UZzvsghDKdJBr-X8k9Z-046ZfsIHDxEC57CbkolZ9c_5fBYaqqyTIeTAOvfGRfyLR2rp126690e02nVDt0EwmGZrKCxLQql5P1pUQrhyKIH4vId1uTWCDbBpr_r4" alt="photo4"></div>
       <div class="ps-item"><img src="https://blogger.googleusercontent.com/img/a/AVvXsEhsxWRdUXGCRbi1SdJ-uGmLHyRYJssW115xYyPSA82zPDAtotjx8R5ZnL2Cy1wIQ80YO_5NRssM2HWfOMYuPE2eH7Ku5CoFv52HdEtRMHntF2_wRyFv5RRqpvYlK_c8C4On_Kp1U5GJc5xKHV2TFvb0hpQ8e1-GhLPbnkIR_09F8SVTOExOKNJSBcMEG0A" alt="photo5"></div>
       <div class="ps-item"><img src="https://blogger.googleusercontent.com/img/a/AVvXsEgLMCLeOWgzTkamOXHpUib20Kd36wA-PnpQ2KiOJMw4Xk2q4TfLW8CAcd6u9hKxxsHld2vmWlNRWpSeuuoIsXoo2_lt04fq13mIv3FwsgxNwzKf1kVR7fxxOtkNPad9ASnK89DIha0qXW_KbxZwtn8PQILi7UefyaDBDhlvq2GYnSRWbtofOBwOxRuG6Kw" alt="photo6"></div>
-      <!--
-        ★ 替换额外2张照片 - 把下面的 YOUR_PHOTO_URL_7 和 YOUR_PHOTO_URL_8 换成你的图片URL
-      -->
       <div class="ps-item"><img src="https://blogger.googleusercontent.com/img/a/AVvXsEja59qZL8xrCmZ36gBbljwrN3mpbqqqkeEDqYFdPrH9797gxzWalh_IDyiPW9wspXKb6SRwd6gita1KgkLE3YUS71xZA8_eC3lTeTie3Kemc-X7HXMidOMb2t3w_wXEIalNnEZ5YG2KQq3ZJ4RbiW_IO8IpZJ0wcRkFsZMnFBIj8oK_eY90Hc24DWIyUf4" alt="photo7"></div>
       <div class="ps-item"><img src="https://blogger.googleusercontent.com/img/a/AVvXsEi3z73gUz9wAdN9cFO7bI9tlkqKmqyrqxZelRPPvZ2_RrOtVTqSAVmOYYfO5q9QL5s6-7AYkpo-RNek83rWsy_HiPb_PLSqKszbqRj-zT0U1T4W1t10aUv2EgVR5rNaC5I4iHP5NgPNMbBBj5B5oQ9sJmHgTRWRKXdvaGCUOYpTz9J3QhT2FFAnAy4HmQM" alt="photo8"></div>
       <!-- duplicate for seamless -->
@@ -1291,3 +1317,4 @@ setTimeout(()=>{showPopup();setInterval(showPopup,25000+Math.random()*10000);},8
 </script>
 </body>
 </html>
+
